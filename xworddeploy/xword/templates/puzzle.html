@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>crossword solution</title>
+</head>
+<body>
+	<style>
+		#puzzle {
+			font-family: monospace;
+		}
+	</style>
+
+    <table align="center" id="puzzle" border="1" bordercolor="black">
+    {% for row in range(puzzle.rows) %}
+        <tr>
+        {% for letter in puzzle.grid[row] %}
+        	{% if letter is number %}
+        		<td bgcolor="white" width="20" height="20">{{letter}}</td>
+        	{% endif %}
+        	{% if letter is string %}
+        	    <td bgcolor="white" width="20" height="20"> </td>
+        	{% endif %}
+			{% if letter is none %}
+	        	<td bgcolor="black" width="20" height="20">{{letter}}</td>
+	        {% endif %}
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+
+<br>
+<strong> ACROSS </strong><br>
+	{% for word in across_list %}
+		{{ word.number }} {{ word.clue }}<br>
+	{% endfor %}
+<strong> DOWN </strong><br>
+	{% for word in down_list %}
+		{{ word.number }} {{ word.clue }}<br>
+	{% endfor %}
+<br>
+<a href="wordbank"> Wordbank for this crossword</a>
+<br>
+    <div align="center"><a href="static/about.html">About</a>
+      : <a href="../">Make a
+        Crossword</a> : <a href="static/splash.html">Splash!</a>
+      : <a href="static/resources.html">Resources</a><br>
+    </div>
+    <h <="" body="">
+    </h>
+</body>
+</html>

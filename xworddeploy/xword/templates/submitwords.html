@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>Create Your own Crossword Puzzle</title>
+</head>
+<body>
+
+{% for word in word_list %}
+	<strong>{{ word[0] }}</strong> -- {{ word[1] }}
+	<br>
+{% endfor %}
+
+<br>
+    <a href="puzzle">Create a Crossword Puzzle with these words</a>
+<br>
+
+Or supply your own words and clues.
+<br>
+{% from "_formhelpers.html" import render_field %}
+<form method=post action="/register">
+  <dl>
+    {{ render_field(form.username) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.confirm) }}
+    {{ render_field(form.accept_tos) }}
+  </dl>
+  <p><input type=submit value=Generate>
+</form>
+    <div align="center"><a href="static/about.html">About</a>
+      : <a href="../">Make a
+        Crossword</a> : <a href="static/splash.html">Splash!</a>
+      : <a href="static/resources.html">Resources</a><br>
+    </div>
+    
+    <h <="" body="">
+    </h>
+</body>
+</html>
