@@ -23,38 +23,40 @@ word_list = ['saffron', 'The dried, orange yellow plant used to as dye and as a 
     ['plague', 'A widespread affliction or calamity.'], \
     ['yarn', 'A strand of twisted threads or a long elaborate narrative.'], \
     ['snicker', 'A snide, slightly stifled laugh.']
- 
+
 a = Crossword(13, 13, None, 5000, word_list)
 a.compute_crossword(2)
 
-print a.word_find()
-print a.display()
-print a.legend()
-print len(a.current_word_list), 'out of', len(word_list)
-print a.debug
+print(a.word_find())
+print(a.display())
+print(a.legend())
+print(len(a.current_word_list), 'out of', len(word_list))
+print(a.debug)
 
 
 @app.route('/')
 def submit_words():
-	return render_template('submitwords.html',word_list=word_list)
+    return render_template('submitwords.html', word_list=word_list)
+
 
 @app.route('/wordbank')
 def word_bank():
-	return render_template('wordbank.html', wordbank=a.current_word_list)
+    return render_template('wordbank.html', wordbank=a.current_word_list)
+
 
 @app.route('/puzzle')
 def puzzle():
-	down_list = []
-	across_list = []
-	for word in a.current_word_list:
-		if word.down_across() is "down":
-			down_list.append(word)
-		else:
-			across_list.append(word)
-				
-	return render_template('puzzle.html', puzzle=a, down_list = down_list, across_list = across_list)
-	
+    down_list = []
+    across_list = []
+    for word in a.current_word_list:
+        if word.down_across() is "down":
+            down_list.append(word)
+        else:
+            across_list.append(word)
+
+    return render_template('puzzle.html', puzzle=a, down_list=down_list, across_list=across_list)
+
 
 @app.route('/display')
 def display():
-	return "<pre>" + a.display() + "</pre>" + "<br>" + a.legend()
+    return "<pre>" + a.display() + "</pre>" + "<br>" + a.legend()
